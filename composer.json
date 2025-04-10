@@ -1,0 +1,39 @@
+{
+    "name": "team-acaisia/acaisia-marketplace-client-php",
+    "description": "Endpoints for clients - users that want to submit calculations. E.g. someone running an inference request.",
+    "keywords": [
+        "openapitools",
+        "openapi-generator",
+        "openapi",
+        "php",
+        "sdk",
+        "rest",
+        "api"
+    ],
+    "homepage": "https://openapi-generator.tech",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "OpenAPI",
+            "homepage": "https://acaisia.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4 || ^8.0",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "ext-mbstring": "*",
+        "guzzlehttp/guzzle": "^7.3",
+        "guzzlehttp/psr7": "^1.7 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0 || ^9.0",
+        "friendsofphp/php-cs-fixer": "^3.5"
+    },
+    "autoload": {
+        "psr-4": { "Acaisia\\Marketplace\\" : "lib/" }
+    },
+    "autoload-dev": {
+        "psr-4": { "Acaisia\\Marketplace\\Test\\" : "test/" }
+    }
+}

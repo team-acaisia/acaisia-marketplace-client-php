@@ -1,0 +1,22 @@
+{
+  "$schema": "./node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+  "spaces": 2,
+  "generator-cli": {
+    "version": "7.12.0",
+    "generators":{
+      "v2.0": {
+        "generatorName": "php",
+        "output": "./",
+        "inputSpec": "../acaisia-marketplace/spec.client.yaml",
+        "additionalProperties": {
+          "composerPackageName": "team-acaisia/acaisia-marketplace-client-php",
+          "developerOrganizationUrl": "https://acaisia.com",
+          "licenseName": "MIT",
+          "packageName": "Acaisia Marketplace Client PHP",
+          "apiPackage": "Client",
+          "invokerPackage": "Acaisia\\Marketplace"
+        }
+      }
+    }
+  }
+}
