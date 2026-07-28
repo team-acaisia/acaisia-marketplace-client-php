@@ -474,6 +474,10 @@ class Configuration
             [
                 "url" => "http://localhost:1318/v1",
                 "description" => "No description provided",
+            ],
+            [
+                "url" => "https://acc.marketplace.acaisia.com/v1",
+                "description" => "No description provided",
             ]
         ];
     }

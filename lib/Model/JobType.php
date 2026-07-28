@@ -47,9 +47,13 @@ class JobType
 
     public const TEXT_TO_IMAGE = 'TEXT_TO_IMAGE';
 
-    public const BLENDER = 'BLENDER';
+    public const BLENDER_EEVEE = 'BLENDER_EEVEE';
+
+    public const BLENDER_CYCLES = 'BLENDER_CYCLES';
 
     public const IMAGE_TO_3_D = 'IMAGE_TO_3D';
+
+    public const IMAGE_TO_3_D_V2 = 'IMAGE_TO_3D_V2';
 
     /**
      * Gets allowable values of the enum
@@ -60,8 +64,10 @@ class JobType
         return [
             self::TEXT_TO_TEXT,
             self::TEXT_TO_IMAGE,
-            self::BLENDER,
-            self::IMAGE_TO_3_D
+            self::BLENDER_EEVEE,
+            self::BLENDER_CYCLES,
+            self::IMAGE_TO_3_D,
+            self::IMAGE_TO_3_D_V2
         ];
     }
 }

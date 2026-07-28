@@ -438,7 +438,7 @@ class Job implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets parameters
      *
-     * @param array<string,mixed>|null $parameters Job parameters (free object for now)
+     * @param array<string,mixed>|null $parameters Unspecified job parameters - free params. Can contain any parameters.
      *
      * @return self
      */

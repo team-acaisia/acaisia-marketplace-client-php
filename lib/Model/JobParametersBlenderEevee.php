@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateJobRequest
+ * JobParametersBlenderEevee
  *
  * PHP version 7.4
  *
@@ -32,15 +32,16 @@ use \ArrayAccess;
 use \Acaisia\Marketplace\ObjectSerializer;
 
 /**
- * CreateJobRequest Class Doc Comment
+ * JobParametersBlenderEevee Class Doc Comment
  *
  * @category Class
+ * @description Parameters specifically for a Blender EEVEE render job. Only here as a helper.
  * @package  Acaisia\Marketplace
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class JobParametersBlenderEevee implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +50,7 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateJobRequest';
+    protected static $openAPIModelName = 'JobParametersBlenderEevee';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +58,10 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => '\Acaisia\Marketplace\Model\JobType',
-        'parameters' => 'array<string,mixed>',
-        'callbacks' => '\Acaisia\Marketplace\Model\JobCallback[]'
+        'resolution' => '\Acaisia\Marketplace\Model\JobParametersBlenderEeveeResolution',
+        'frames' => '\Acaisia\Marketplace\Model\JobParametersBlenderEeveeFrames',
+        'taa_render_samples' => 'int',
+        'scene_url' => 'string'
     ];
 
     /**
@@ -70,9 +72,10 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'parameters' => null,
-        'callbacks' => null
+        'resolution' => null,
+        'frames' => null,
+        'taa_render_samples' => null,
+        'scene_url' => 'url'
     ];
 
     /**
@@ -81,9 +84,10 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'parameters' => false,
-        'callbacks' => false
+        'resolution' => false,
+        'frames' => false,
+        'taa_render_samples' => false,
+        'scene_url' => false
     ];
 
     /**
@@ -172,9 +176,10 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'parameters' => 'parameters',
-        'callbacks' => 'callbacks'
+        'resolution' => 'resolution',
+        'frames' => 'frames',
+        'taa_render_samples' => 'taa_render_samples',
+        'scene_url' => 'scene_url'
     ];
 
     /**
@@ -183,9 +188,10 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'parameters' => 'setParameters',
-        'callbacks' => 'setCallbacks'
+        'resolution' => 'setResolution',
+        'frames' => 'setFrames',
+        'taa_render_samples' => 'setTaaRenderSamples',
+        'scene_url' => 'setSceneUrl'
     ];
 
     /**
@@ -194,9 +200,10 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'parameters' => 'getParameters',
-        'callbacks' => 'getCallbacks'
+        'resolution' => 'getResolution',
+        'frames' => 'getFrames',
+        'taa_render_samples' => 'getTaaRenderSamples',
+        'scene_url' => 'getSceneUrl'
     ];
 
     /**
@@ -256,9 +263,10 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('parameters', $data ?? [], null);
-        $this->setIfExists('callbacks', $data ?? [], null);
+        $this->setIfExists('resolution', $data ?? [], null);
+        $this->setIfExists('frames', $data ?? [], null);
+        $this->setIfExists('taa_render_samples', $data ?? [], 64);
+        $this->setIfExists('scene_url', $data ?? [], null);
     }
 
     /**
@@ -288,11 +296,25 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['resolution'] === null) {
+            $invalidProperties[] = "'resolution' can't be null";
         }
-        if ($this->container['parameters'] === null) {
-            $invalidProperties[] = "'parameters' can't be null";
+        if ($this->container['frames'] === null) {
+            $invalidProperties[] = "'frames' can't be null";
+        }
+        if ($this->container['taa_render_samples'] === null) {
+            $invalidProperties[] = "'taa_render_samples' can't be null";
+        }
+        if (($this->container['taa_render_samples'] > 256)) {
+            $invalidProperties[] = "invalid value for 'taa_render_samples', must be smaller than or equal to 256.";
+        }
+
+        if (($this->container['taa_render_samples'] < 1)) {
+            $invalidProperties[] = "invalid value for 'taa_render_samples', must be bigger than or equal to 1.";
+        }
+
+        if ($this->container['scene_url'] === null) {
+            $invalidProperties[] = "'scene_url' can't be null";
         }
         return $invalidProperties;
     }
@@ -310,82 +332,117 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets type
+     * Gets resolution
      *
-     * @return \Acaisia\Marketplace\Model\JobType
+     * @return \Acaisia\Marketplace\Model\JobParametersBlenderEeveeResolution
      */
-    public function getType()
+    public function getResolution()
     {
-        return $this->container['type'];
+        return $this->container['resolution'];
     }
 
     /**
-     * Sets type
+     * Sets resolution
      *
-     * @param \Acaisia\Marketplace\Model\JobType $type type
+     * @param \Acaisia\Marketplace\Model\JobParametersBlenderEeveeResolution $resolution resolution
      *
      * @return self
      */
-    public function setType($type)
+    public function setResolution($resolution)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($resolution)) {
+            throw new \InvalidArgumentException('non-nullable resolution cannot be null');
         }
-        $this->container['type'] = $type;
+        $this->container['resolution'] = $resolution;
 
         return $this;
     }
 
     /**
-     * Gets parameters
+     * Gets frames
      *
-     * @return array<string,mixed>
+     * @return \Acaisia\Marketplace\Model\JobParametersBlenderEeveeFrames
      */
-    public function getParameters()
+    public function getFrames()
     {
-        return $this->container['parameters'];
+        return $this->container['frames'];
     }
 
     /**
-     * Sets parameters
+     * Sets frames
      *
-     * @param array<string,mixed> $parameters Unspecified job parameters - free params. Can contain any parameters.
+     * @param \Acaisia\Marketplace\Model\JobParametersBlenderEeveeFrames $frames frames
      *
      * @return self
      */
-    public function setParameters($parameters)
+    public function setFrames($frames)
     {
-        if (is_null($parameters)) {
-            throw new \InvalidArgumentException('non-nullable parameters cannot be null');
+        if (is_null($frames)) {
+            throw new \InvalidArgumentException('non-nullable frames cannot be null');
         }
-        $this->container['parameters'] = $parameters;
+        $this->container['frames'] = $frames;
 
         return $this;
     }
 
     /**
-     * Gets callbacks
+     * Gets taa_render_samples
      *
-     * @return \Acaisia\Marketplace\Model\JobCallback[]|null
+     * @return int
      */
-    public function getCallbacks()
+    public function getTaaRenderSamples()
     {
-        return $this->container['callbacks'];
+        return $this->container['taa_render_samples'];
     }
 
     /**
-     * Sets callbacks
+     * Sets taa_render_samples
      *
-     * @param \Acaisia\Marketplace\Model\JobCallback[]|null $callbacks callbacks
+     * @param int $taa_render_samples taa_render_samples
      *
      * @return self
      */
-    public function setCallbacks($callbacks)
+    public function setTaaRenderSamples($taa_render_samples)
     {
-        if (is_null($callbacks)) {
-            throw new \InvalidArgumentException('non-nullable callbacks cannot be null');
+        if (is_null($taa_render_samples)) {
+            throw new \InvalidArgumentException('non-nullable taa_render_samples cannot be null');
         }
-        $this->container['callbacks'] = $callbacks;
+
+        if (($taa_render_samples > 256)) {
+            throw new \InvalidArgumentException('invalid value for $taa_render_samples when calling JobParametersBlenderEevee., must be smaller than or equal to 256.');
+        }
+        if (($taa_render_samples < 1)) {
+            throw new \InvalidArgumentException('invalid value for $taa_render_samples when calling JobParametersBlenderEevee., must be bigger than or equal to 1.');
+        }
+
+        $this->container['taa_render_samples'] = $taa_render_samples;
+
+        return $this;
+    }
+
+    /**
+     * Gets scene_url
+     *
+     * @return string
+     */
+    public function getSceneUrl()
+    {
+        return $this->container['scene_url'];
+    }
+
+    /**
+     * Sets scene_url
+     *
+     * @param string $scene_url scene_url
+     *
+     * @return self
+     */
+    public function setSceneUrl($scene_url)
+    {
+        if (is_null($scene_url)) {
+            throw new \InvalidArgumentException('non-nullable scene_url cannot be null');
+        }
+        $this->container['scene_url'] = $scene_url;
 
         return $this;
     }

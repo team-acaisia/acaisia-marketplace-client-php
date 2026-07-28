@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateJobRequest
+ * JobParametersBlenderEeveeFrames
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Acaisia\Marketplace\ObjectSerializer;
 
 /**
- * CreateJobRequest Class Doc Comment
+ * JobParametersBlenderEeveeFrames Class Doc Comment
  *
  * @category Class
  * @package  Acaisia\Marketplace
@@ -40,7 +40,7 @@ use \Acaisia\Marketplace\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class JobParametersBlenderEeveeFrames implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateJobRequest';
+    protected static $openAPIModelName = 'JobParametersBlenderEevee_frames';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => '\Acaisia\Marketplace\Model\JobType',
-        'parameters' => 'array<string,mixed>',
-        'callbacks' => '\Acaisia\Marketplace\Model\JobCallback[]'
+        'start' => 'int',
+        'end' => 'int'
     ];
 
     /**
@@ -70,9 +69,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'parameters' => null,
-        'callbacks' => null
+        'start' => null,
+        'end' => null
     ];
 
     /**
@@ -81,9 +79,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'parameters' => false,
-        'callbacks' => false
+        'start' => false,
+        'end' => false
     ];
 
     /**
@@ -172,9 +169,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'parameters' => 'parameters',
-        'callbacks' => 'callbacks'
+        'start' => 'start',
+        'end' => 'end'
     ];
 
     /**
@@ -183,9 +179,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'parameters' => 'setParameters',
-        'callbacks' => 'setCallbacks'
+        'start' => 'setStart',
+        'end' => 'setEnd'
     ];
 
     /**
@@ -194,9 +189,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'parameters' => 'getParameters',
-        'callbacks' => 'getCallbacks'
+        'start' => 'getStart',
+        'end' => 'getEnd'
     ];
 
     /**
@@ -256,9 +250,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('parameters', $data ?? [], null);
-        $this->setIfExists('callbacks', $data ?? [], null);
+        $this->setIfExists('start', $data ?? [], null);
+        $this->setIfExists('end', $data ?? [], null);
     }
 
     /**
@@ -288,12 +281,20 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['start'] === null) {
+            $invalidProperties[] = "'start' can't be null";
         }
-        if ($this->container['parameters'] === null) {
-            $invalidProperties[] = "'parameters' can't be null";
+        if (($this->container['start'] < 1)) {
+            $invalidProperties[] = "invalid value for 'start', must be bigger than or equal to 1.";
         }
+
+        if ($this->container['end'] === null) {
+            $invalidProperties[] = "'end' can't be null";
+        }
+        if (($this->container['end'] < 1)) {
+            $invalidProperties[] = "invalid value for 'end', must be bigger than or equal to 1.";
+        }
+
         return $invalidProperties;
     }
 
@@ -310,82 +311,65 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets type
+     * Gets start
      *
-     * @return \Acaisia\Marketplace\Model\JobType
+     * @return int
      */
-    public function getType()
+    public function getStart()
     {
-        return $this->container['type'];
+        return $this->container['start'];
     }
 
     /**
-     * Sets type
+     * Sets start
      *
-     * @param \Acaisia\Marketplace\Model\JobType $type type
+     * @param int $start start
      *
      * @return self
      */
-    public function setType($type)
+    public function setStart($start)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($start)) {
+            throw new \InvalidArgumentException('non-nullable start cannot be null');
         }
-        $this->container['type'] = $type;
+
+        if (($start < 1)) {
+            throw new \InvalidArgumentException('invalid value for $start when calling JobParametersBlenderEeveeFrames., must be bigger than or equal to 1.');
+        }
+
+        $this->container['start'] = $start;
 
         return $this;
     }
 
     /**
-     * Gets parameters
+     * Gets end
      *
-     * @return array<string,mixed>
+     * @return int
      */
-    public function getParameters()
+    public function getEnd()
     {
-        return $this->container['parameters'];
+        return $this->container['end'];
     }
 
     /**
-     * Sets parameters
+     * Sets end
      *
-     * @param array<string,mixed> $parameters Unspecified job parameters - free params. Can contain any parameters.
+     * @param int $end end
      *
      * @return self
      */
-    public function setParameters($parameters)
+    public function setEnd($end)
     {
-        if (is_null($parameters)) {
-            throw new \InvalidArgumentException('non-nullable parameters cannot be null');
+        if (is_null($end)) {
+            throw new \InvalidArgumentException('non-nullable end cannot be null');
         }
-        $this->container['parameters'] = $parameters;
 
-        return $this;
-    }
-
-    /**
-     * Gets callbacks
-     *
-     * @return \Acaisia\Marketplace\Model\JobCallback[]|null
-     */
-    public function getCallbacks()
-    {
-        return $this->container['callbacks'];
-    }
-
-    /**
-     * Sets callbacks
-     *
-     * @param \Acaisia\Marketplace\Model\JobCallback[]|null $callbacks callbacks
-     *
-     * @return self
-     */
-    public function setCallbacks($callbacks)
-    {
-        if (is_null($callbacks)) {
-            throw new \InvalidArgumentException('non-nullable callbacks cannot be null');
+        if (($end < 1)) {
+            throw new \InvalidArgumentException('invalid value for $end when calling JobParametersBlenderEeveeFrames., must be bigger than or equal to 1.');
         }
-        $this->container['callbacks'] = $callbacks;
+
+        $this->container['end'] = $end;
 
         return $this;
     }

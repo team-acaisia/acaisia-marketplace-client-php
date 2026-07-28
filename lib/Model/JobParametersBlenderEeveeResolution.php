@@ -1,6 +1,6 @@
 <?php
 /**
- * CreateJobRequest
+ * JobParametersBlenderEeveeResolution
  *
  * PHP version 7.4
  *
@@ -32,7 +32,7 @@ use \ArrayAccess;
 use \Acaisia\Marketplace\ObjectSerializer;
 
 /**
- * CreateJobRequest Class Doc Comment
+ * JobParametersBlenderEeveeResolution Class Doc Comment
  *
  * @category Class
  * @package  Acaisia\Marketplace
@@ -40,7 +40,7 @@ use \Acaisia\Marketplace\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
+class JobParametersBlenderEeveeResolution implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CreateJobRequest';
+    protected static $openAPIModelName = 'JobParametersBlenderEevee_resolution';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'type' => '\Acaisia\Marketplace\Model\JobType',
-        'parameters' => 'array<string,mixed>',
-        'callbacks' => '\Acaisia\Marketplace\Model\JobCallback[]'
+        'width' => 'int',
+        'height' => 'int'
     ];
 
     /**
@@ -70,9 +69,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'type' => null,
-        'parameters' => null,
-        'callbacks' => null
+        'width' => null,
+        'height' => null
     ];
 
     /**
@@ -81,9 +79,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'type' => false,
-        'parameters' => false,
-        'callbacks' => false
+        'width' => false,
+        'height' => false
     ];
 
     /**
@@ -172,9 +169,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'type' => 'type',
-        'parameters' => 'parameters',
-        'callbacks' => 'callbacks'
+        'width' => 'width',
+        'height' => 'height'
     ];
 
     /**
@@ -183,9 +179,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'type' => 'setType',
-        'parameters' => 'setParameters',
-        'callbacks' => 'setCallbacks'
+        'width' => 'setWidth',
+        'height' => 'setHeight'
     ];
 
     /**
@@ -194,9 +189,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'type' => 'getType',
-        'parameters' => 'getParameters',
-        'callbacks' => 'getCallbacks'
+        'width' => 'getWidth',
+        'height' => 'getHeight'
     ];
 
     /**
@@ -256,9 +250,8 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('type', $data ?? [], null);
-        $this->setIfExists('parameters', $data ?? [], null);
-        $this->setIfExists('callbacks', $data ?? [], null);
+        $this->setIfExists('width', $data ?? [], null);
+        $this->setIfExists('height', $data ?? [], null);
     }
 
     /**
@@ -288,12 +281,28 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['type'] === null) {
-            $invalidProperties[] = "'type' can't be null";
+        if ($this->container['width'] === null) {
+            $invalidProperties[] = "'width' can't be null";
         }
-        if ($this->container['parameters'] === null) {
-            $invalidProperties[] = "'parameters' can't be null";
+        if (($this->container['width'] > 16384)) {
+            $invalidProperties[] = "invalid value for 'width', must be smaller than or equal to 16384.";
         }
+
+        if (($this->container['width'] < 16)) {
+            $invalidProperties[] = "invalid value for 'width', must be bigger than or equal to 16.";
+        }
+
+        if ($this->container['height'] === null) {
+            $invalidProperties[] = "'height' can't be null";
+        }
+        if (($this->container['height'] > 16384)) {
+            $invalidProperties[] = "invalid value for 'height', must be smaller than or equal to 16384.";
+        }
+
+        if (($this->container['height'] < 16)) {
+            $invalidProperties[] = "invalid value for 'height', must be bigger than or equal to 16.";
+        }
+
         return $invalidProperties;
     }
 
@@ -310,82 +319,71 @@ class CreateJobRequest implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets type
+     * Gets width
      *
-     * @return \Acaisia\Marketplace\Model\JobType
+     * @return int
      */
-    public function getType()
+    public function getWidth()
     {
-        return $this->container['type'];
+        return $this->container['width'];
     }
 
     /**
-     * Sets type
+     * Sets width
      *
-     * @param \Acaisia\Marketplace\Model\JobType $type type
+     * @param int $width width
      *
      * @return self
      */
-    public function setType($type)
+    public function setWidth($width)
     {
-        if (is_null($type)) {
-            throw new \InvalidArgumentException('non-nullable type cannot be null');
+        if (is_null($width)) {
+            throw new \InvalidArgumentException('non-nullable width cannot be null');
         }
-        $this->container['type'] = $type;
+
+        if (($width > 16384)) {
+            throw new \InvalidArgumentException('invalid value for $width when calling JobParametersBlenderEeveeResolution., must be smaller than or equal to 16384.');
+        }
+        if (($width < 16)) {
+            throw new \InvalidArgumentException('invalid value for $width when calling JobParametersBlenderEeveeResolution., must be bigger than or equal to 16.');
+        }
+
+        $this->container['width'] = $width;
 
         return $this;
     }
 
     /**
-     * Gets parameters
+     * Gets height
      *
-     * @return array<string,mixed>
+     * @return int
      */
-    public function getParameters()
+    public function getHeight()
     {
-        return $this->container['parameters'];
+        return $this->container['height'];
     }
 
     /**
-     * Sets parameters
+     * Sets height
      *
-     * @param array<string,mixed> $parameters Unspecified job parameters - free params. Can contain any parameters.
+     * @param int $height height
      *
      * @return self
      */
-    public function setParameters($parameters)
+    public function setHeight($height)
     {
-        if (is_null($parameters)) {
-            throw new \InvalidArgumentException('non-nullable parameters cannot be null');
+        if (is_null($height)) {
+            throw new \InvalidArgumentException('non-nullable height cannot be null');
         }
-        $this->container['parameters'] = $parameters;
 
-        return $this;
-    }
-
-    /**
-     * Gets callbacks
-     *
-     * @return \Acaisia\Marketplace\Model\JobCallback[]|null
-     */
-    public function getCallbacks()
-    {
-        return $this->container['callbacks'];
-    }
-
-    /**
-     * Sets callbacks
-     *
-     * @param \Acaisia\Marketplace\Model\JobCallback[]|null $callbacks callbacks
-     *
-     * @return self
-     */
-    public function setCallbacks($callbacks)
-    {
-        if (is_null($callbacks)) {
-            throw new \InvalidArgumentException('non-nullable callbacks cannot be null');
+        if (($height > 16384)) {
+            throw new \InvalidArgumentException('invalid value for $height when calling JobParametersBlenderEeveeResolution., must be smaller than or equal to 16384.');
         }
-        $this->container['callbacks'] = $callbacks;
+        if (($height < 16)) {
+            throw new \InvalidArgumentException('invalid value for $height when calling JobParametersBlenderEeveeResolution., must be bigger than or equal to 16.');
+        }
+
+        $this->container['height'] = $height;
 
         return $this;
     }
